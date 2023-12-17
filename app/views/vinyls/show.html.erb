@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @vinyl %>
+
+<div>
+  <%= link_to "Edit this vinyl", edit_vinyl_path(@vinyl) %> |
+  <%= link_to "Back to vinyls", vinyls_path %>
+
+  <%= button_to "Destroy this vinyl", @vinyl, method: :delete %>
+</div>

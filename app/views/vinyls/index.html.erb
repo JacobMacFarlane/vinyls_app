@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Vinyls</h1>
+
+<div id="vinyls">
+  <% @vinyls.each do |vinyl| %>
+    <%= render vinyl %>
+    <p>
+      <%= link_to "Show this vinyl", vinyl %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New vinyl", new_vinyl_path %>
