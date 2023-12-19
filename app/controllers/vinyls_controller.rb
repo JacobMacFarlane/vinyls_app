@@ -1,5 +1,7 @@
 class VinylsController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :set_vinyl, only: %i[show edit update destroy]
+
 
   # GET /vinyls or /vinyls.json
   def index
