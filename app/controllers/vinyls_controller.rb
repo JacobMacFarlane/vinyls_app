@@ -1,5 +1,5 @@
 class VinylsController < ApplicationController
-  before_action :set_vinyl, only: %i[ show edit update destroy ]
+  skip_before_action :verify_authenticity_token
 
   # GET /vinyls or /vinyls.json
   def index
@@ -23,14 +23,11 @@ class VinylsController < ApplicationController
 
   # POST /vinyls or /vinyls.json
   def create
-    @vinyl = Vinyl.new(vinyl_params)
-
-    respond_to do |format|
-      if @vinyl.save
-        render json: @vinyl, status: :created, location: @vinyl
-      else
-        render json: @vinyl.errors, status: :unprocessable_entity
-      end
+    vinyl = Vinyl.new(vinyl_params)
+    if vinyl.save
+      render json: vinyl, status: :created
+    else
+      render json: vinyl.errors, status: :unprocessable_entity
     end
   end
 
