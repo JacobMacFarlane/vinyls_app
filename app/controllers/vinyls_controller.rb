@@ -44,12 +44,8 @@ class VinylsController < ApplicationController
 
   # DELETE /vinyls/1 or /vinyls/1.json
   def destroy
-    @vinyl.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to vinyls_url, notice: "Vinyl was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    @vinyl.destroy
+    head :no_content
   end
 
   private
