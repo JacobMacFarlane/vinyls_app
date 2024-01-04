@@ -1,5 +1,6 @@
 class VinylsController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :require_login   # Add this line
   before_action :set_vinyl, only: %i[show edit update destroy]
 
 
@@ -52,6 +53,12 @@ class VinylsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_vinyl
       @vinyl = Vinyl.find(params[:id])
+    end
+
+    def require_login
+      unless session[:user_id]
+        render json: { error: 'You must be logged in to access this section' }, status: :unauthorized
+      end
     end
 
     # Only allow a list of trusted parameters through.
