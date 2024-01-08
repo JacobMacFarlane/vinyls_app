@@ -2,6 +2,7 @@ class UsersController < ApplicationController
     skip_before_action :verify_authenticity_token, only: [:create]
 
     def create 
+        Rails.logger.debug "Received params: #{params.inspect}"
         user = User.new(user_params)
         if user.save
             render json: { status: 'User created successfully'}, status: :created
