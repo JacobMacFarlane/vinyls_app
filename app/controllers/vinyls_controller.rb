@@ -1,6 +1,6 @@
 class VinylsController < ApplicationController
   skip_before_action :verify_authenticity_token
-  before_action :require_login   # Add this line
+  # before_action :require_login   # Add this line
   before_action :set_vinyl, only: %i[show edit update destroy]
 
 
